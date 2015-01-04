@@ -9,7 +9,7 @@ int table[11][7] = {{-1, 1,  2,  3,  4,  5,  6}, //可對照下面 checks functi
                    {  5, 7, -1, -1,  6, -1, -1},
                    {  6, 7, -1, -1, -1, -1, -1},
                    {  7, 7, -1, -1, 11, -1, -1},
-				           {  8, 8, -1,  8, 11, -1,  8},};
+		   {  8, 8, -1,  8, 11, -1,  8},};
 				   							 //SCANNER 表
 				   							 //狀態一 -> 狀態二 (進入判斷是否為number 的 DFA) 老師PPT  lecture 1 p.49 的 DFA (13為2,14為3 以此類推) 
 				   							 //狀態一 -> 狀態八 (進入判斷是否為id 的 DFA 只有一個STATE 因為不論數字或英文都可接受 ) 
@@ -23,17 +23,17 @@ struct parser{
 									//轉換為:A ->CB
 									//		 B ->f | 空								
 struct parser parsetable[12][17] = {{"x",  "+",  "-",  "*",  "/",  "(", ")", "N", "I",    "D", ";", "=", "{", "}",        "i", ">", "$"}, //TER 
-								                    {"S",  "x",  "x",  "x",  "x",  "x", "x", "x", "x",   "Z$", "x", "x", "x", "x",       "Z$", "x", "x"}, //S ->Start 
-								                    {"Z",  "x",  "x",  "x",  "x",  "x", "x", "x", "x",    "A", "x", "x", "x", "x",        "f", "x", "x"}, //Z ->Stmts
-								                    {"A",  "x",  "x",  "x",  "x",  "x", "x", "x", "x",   "CB", "x", "x", "x", "x",        "x", "x", "x"}, //A ->AssignStmts
-								                    {"B",  "x",  "x",  "x",  "x",  "x", "x", "x", "x",    "A",  "",  "",  "",  "",         "",  "",  ""}, //B  
-								                    {"f",  "x",  "x",  "x",  "x",  "x", "x", "x", "x",    "x", "x", "x", "x", "x","i(I>d){A}", "x", "x"}, //f ->ifStmt 
-								                    {"C",  "x",  "x",  "x",  "x",  "x", "x", "x", "x","DI=E;", "x", "x", "x", "x",        "x", "x", "x"}, //C ->Stmt
-    				           	            {"E",  "x",  "x",  "x",  "x", "TR", "x","TR","TR",    "x", "x", "x", "x", "x",        "x", "x", "x"}, //E ->expression
-    				                        {"R","+TR","-TR",  "x",  "x",  "x",  "", "x", "x",    "x",  "",  "",  "",  "",         "",  "",  ""}, 
-    				           	            {"T",  "x",  "x",  "x",  "x", "FY", "x","FY","FY",    "x", "x", "x", "x", "x",        "x", "x", "x"}, //T ->term 
-    				                        {"Y",   "",   "","*FY","/FY",  "x",  "", "x", "x",    "x",  "",  "",  "",  "",         "",  "",  ""},
-   				                          {"F",  "x",  "x",  "x",  "x","(E)", "x", "N", "I",    "x", "x", "x", "x", "x",        "x", "x", "x"}};//F ->factor
+				    {"S",  "x",  "x",  "x",  "x",  "x", "x", "x", "x",   "Z$", "x", "x", "x", "x",       "Z$", "x", "x"}, //S ->Start 
+				    {"Z",  "x",  "x",  "x",  "x",  "x", "x", "x", "x",    "A", "x", "x", "x", "x",        "f", "x", "x"}, //Z ->Stmts
+				    {"A",  "x",  "x",  "x",  "x",  "x", "x", "x", "x",   "CB", "x", "x", "x", "x",        "x", "x", "x"}, //A ->AssignStmts
+				    {"B",  "x",  "x",  "x",  "x",  "x", "x", "x", "x",    "A",  "",  "",  "",  "",         "",  "",  ""}, //B  
+				    {"f",  "x",  "x",  "x",  "x",  "x", "x", "x", "x",    "x", "x", "x", "x", "x","i(I>d){A}", "x", "x"}, //f ->ifStmt 
+				    {"C",  "x",  "x",  "x",  "x",  "x", "x", "x", "x","DI=E;", "x", "x", "x", "x",        "x", "x", "x"}, //C ->Stmt
+    				    {"E",  "x",  "x",  "x",  "x", "TR", "x","TR","TR",    "x", "x", "x", "x", "x",        "x", "x", "x"}, //E ->expression
+    				    {"R","+TR","-TR",  "x",  "x",  "x",  "", "x", "x",    "x",  "",  "",  "",  "",         "",  "",  ""}, 
+    				    {"T",  "x",  "x",  "x",  "x", "FY", "x","FY","FY",    "x", "x", "x", "x", "x",        "x", "x", "x"}, //T ->term 
+    				    {"Y",   "",   "","*FY","/FY",  "x",  "", "x", "x",    "x",  "",  "",  "",  "",         "",  "",  ""},
+   				    {"F",  "x",  "x",  "x",  "x","(E)", "x", "N", "I",    "x", "x", "x", "x", "x",        "x", "x", "x"}};//F ->factor
 struct stack{
 	char stk[100];
 	int top;
@@ -52,7 +52,7 @@ char n[100],pn[50];
 int  off=0;
 int main(int argc, char *argv[]) 
 {   
-  printf("This is an identify number machine!!!\n");
+        printf("This is an identify number machine!!!\n");
 	printf("Please enter a test data:\n");
 	memset(n,0,100);		
 	gets(n);
@@ -78,8 +78,8 @@ int checks(char a)
  	if(a>=48 && a<=57)  return 1; //0~9
 	if(a==46)           return 2; //.	
 	if(a==69 )          return 3; //E
-  if(a==43 || a==45)	return 4; //+ | -
-  if(a>=65 && a<=90)  return 6; //A~Z
+        if(a==43 || a==45)	return 4; //+ | -
+        if(a>=65 && a<=90)  return 6; //A~Z
 	return 5;		
  }
  int scanner()
@@ -147,8 +147,8 @@ int checks(char a)
  	if(a=='+')	return 1;
 	if(a=='-')	return 2;	
 	if(a=='*')	return 3;
-  if(a=='/')	return 4;
-  if(a=='(')	return 5;
+        if(a=='/')	return 4;
+        if(a=='(')	return 5;
 	if(a==')')	return 6;
 	if(a=='N')	return 7;
 	if(a=='I')	return 8;
@@ -166,15 +166,15 @@ int checks(char a)
  {	
  	if(a=='S')	return 1;
  	if(a=='Z')	return 2;
-	if(a=='A')  return 3;	
+	if(a=='A')      return 3;	
 	if(a=='B')	return 4;
 	if(a=='f')	return 5;
-  if(a=='C')	return 6;
+        if(a=='C')	return 6;
  	if(a=='E')	return 7;
-	if(a=='R')  return 8;	
+	if(a=='R')      return 8;	
 	if(a=='T')	return 9;
-  if(a=='Y')	return 10;
-  if(a=='F')	return 11;	
+        if(a=='Y')	return 10;
+        if(a=='F')	return 11;	
 	return 0;	
  }
 int  parsertest()
